@@ -1,6 +1,6 @@
 const xss = require('xss')
 
-const BooksService = {
+const BrewsService = {
     getBrews(knex, user_name) {
       return knex.raw(
             `SELECT 
@@ -67,4 +67,4 @@ const BooksService = {
     }
   }
   
-  module.exports = BooksService
+  module.exports = BrewsService
