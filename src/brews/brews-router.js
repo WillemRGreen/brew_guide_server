@@ -22,8 +22,6 @@ brewsRouter
   .post(jsonParser, (req, res, next) => {
     const newBrew = req.body
 
-    
-
     for (const [key, value] of Object.entries(newBrew)) {
       if (value == null) {
         return res.status(400).json({
@@ -32,11 +30,20 @@ brewsRouter
       }
     }
 
-    newBrew.user_id = req.user.id
+    let roastLevel = BrewsService.makeRoastLevel(newBrew.roast_level)
+    let returnBrew = BrewsService.specsCalculate(roastLevel, newBrew.method, newBrew.output)
+
+    returnBrew.user_id = req.user.id
+    returnBrew.name = newBrew.name
+    returnBrew.name = newBrew.description
+    returnBrew.method = newBrew.method
+    returnBrew.output = newBrew.output
+    returnBrew.roast_level = newBrew.roast_level
+    console.log(returnBrew)
 
     BrewsService.insertBrew(
       req.app.get('db'),
-      newBrew
+      returnBrew
     )
       .then(brew => {
         res

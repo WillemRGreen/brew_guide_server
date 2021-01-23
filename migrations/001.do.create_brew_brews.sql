@@ -5,7 +5,6 @@ CREATE TABLE brew_brews (
     method TEXT NOT NULL,
     input TEXT NOT NULL,
     output TEXT NOT NULL,
-    brew_time TEXT NOT NULL,
     grind TEXT NOT NULL,
     roast_level TEXT NOT NULL,
     date_created TIMESTAMP DEFAULT now() NOT NULL
