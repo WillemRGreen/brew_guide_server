@@ -20,8 +20,9 @@ brewsRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { name, description, method, input, output, brew_time, grind, roast_level } = req.body
-    const newBrew = { name, description, method, input, output, brew_time, grind, roast_level }
+    const newBrew = req.body
+
+    
 
     for (const [key, value] of Object.entries(newBrew)) {
       if (value == null) {
