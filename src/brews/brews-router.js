@@ -19,6 +19,7 @@ brewsRouter
       })
       .catch(next)
   })
+
   .post(jsonParser, (req, res, next) => {
     const newBrew = req.body
 
@@ -35,11 +36,10 @@ brewsRouter
 
     returnBrew.user_id = req.user.id
     returnBrew.name = newBrew.name
-    returnBrew.name = newBrew.description
+    returnBrew.description = newBrew.description
     returnBrew.method = newBrew.method
     returnBrew.output = newBrew.output
     returnBrew.roast_level = newBrew.roast_level
-    console.log(returnBrew)
 
     BrewsService.insertBrew(
       req.app.get('db'),
@@ -87,8 +87,8 @@ brewsRouter
       .catch(next)
   })
   .patch(jsonParser, (req, res, next) => {
-    const { name, description, method, input, output, brew_time, grind, roast_level } = req.body
-    const brewToUpdate = { name, description, method, input, output, brew_time, grind, roast_level }
+    const { name, description, method, input, output, grind, roast_level } = req.body
+    const brewToUpdate = { name, description, method, input, output, grind, roast_level }
 
     const numberOfValues = Object.values(brewToUpdate).filter(Boolean).length
     if (numberOfValues === 0)

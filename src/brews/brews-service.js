@@ -11,7 +11,6 @@ const BrewsService = {
                 b.method,
                 b.input,
                 b.output,
-                b.brew_time,
                 b.grind,
                 b.roast_level,
                 b.user_id,
@@ -117,8 +116,7 @@ const BrewsService = {
         description: xss(brew.description),
         method: xss(brew.method),
         input: xss(brew.input),
-        output: xss(brew.ouput),
-        brew_time: xss(brew.brew_time),
+        output: xss(brew.output),
         grind: xss(brew.grind),
         roast_level: xss(brew.roast_level)
       }
