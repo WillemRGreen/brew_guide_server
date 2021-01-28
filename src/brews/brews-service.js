@@ -1,4 +1,3 @@
-const { should } = require('chai')
 const xss = require('xss')
 
 const BrewsService = {
