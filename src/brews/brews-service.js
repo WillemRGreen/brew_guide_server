@@ -105,7 +105,7 @@ const BrewsService = {
           let finalInput = inputNum.toFixed(0)
           newBrew.input = finalInput.toString()
       }
-      return newBrew;
+      return newBrew
   },
 
     serializeBrews(brew) {
